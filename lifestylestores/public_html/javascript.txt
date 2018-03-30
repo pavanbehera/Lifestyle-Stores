@@ -1,0 +1,52 @@
+/*eslint-disable*/
+import React, { Component } from 'react';
+import {BrowserRouter,Route,Link} from 'react-router-dom';
+import App from './App.js';
+import NewItem from './App.js';
+import {Row,Column,Card,Layout,Menu,Icon} from 'antd';
+const {Header, Footer, Sider, Content } = Layout;
+
+
+class MyRoutes extends Component{
+    render(){
+    return (<BrowserRouter>
+        <div>
+             <Layout>
+      <Sider   breakpoint="md" collapsedWidth="0" style={{ background: '#fff' }}>
+      <Menu theme="light" mode="inline" defaultSelectedKeys={['4']} style={{marginTop:'64p'}}>
+      <Menu.Item key="1">
+     <Icon type="layout" />
+        <span className="nav-text">ACCOUNT</span>
+      </Menu.Item>
+      <Menu.Item key="2">
+        <Icon type="shoppping-cart" />
+        <span className="nav-text">
+        <Link to='/new-item'> upload item</Link> </span>
+      </Menu.Item>
+      
+    </Menu>
+      </Sider>
+      <Layout>
+        <Header style={{ background: '#fff',lineHeight: '64px' }}> <Menu theme="dark" mode="" defaultSelectedKeys={['4']}>
+      <Menu.Item key="1">
+     <Icon type="heart" />
+        <span className="nav-text">ACCOUNT</span>
+      </Menu.Item>
+      
+      
+    </Menu>
+    </Header>
+        <Content style={{margin: '26px'}}>
+        <Route exact path='/new-item' component={NewItem}></Route>
+        <Route exact path='/' component={App}></Route>
+        </Content>
+        <Footer></Footer>
+      </Layout>
+    </Layout>
+        </div>
+         </BrowserRouter>);
+    }
+    
+}
+
+export default MyRoutes;
